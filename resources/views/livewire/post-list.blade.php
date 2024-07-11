@@ -5,13 +5,15 @@
                 <button class="gray-500 text-xs mr-3" wire:click="clearFilters()">X</button>
             @endif
             @if ($this->activeCategory)
-            All Posts From :
+
                 <x-badge :textColor="$this->activeCategory->text_Color" :bgColor="$this->activeCategory->bg_Color">
                     {{ $this->activeCategory->title }}
                 </x-badge>
             @endif
             @if ($search)
-                Containing : "{{$search}}"
+                <span class="ml-2">
+                    Containing : <strong>{{$search}}</strong>
+                </span>
             @endif
         </div>
         <div class="flex items-center space-x-4 font-light ">

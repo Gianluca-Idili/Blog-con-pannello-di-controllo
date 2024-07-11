@@ -37,6 +37,10 @@ class Post extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    public function likes(){
+        return $this->belongsToMany(User::class, 'post_like')->withTimestamps();
+    }
+
     public function scopePublished($query){
         $query->where('published_at', '<=', Carbon::now());
     }
@@ -64,6 +68,6 @@ class Post extends Model
     public function getThumbnailImage(){
         $isUrl = str_contains($this->image, 'http');
 
-        return ($isUrl) ? $this->image : Storage::disck('public')->url($this->image);
+        return ($isUrl) ? $this->image : Storage::disk('public')->url($this->image);
     }
 }
