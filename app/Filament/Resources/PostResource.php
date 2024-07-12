@@ -22,6 +22,7 @@ use App\Filament\Resources\PostResource\Pages;
 use Symfony\Contracts\Service\Attribute\Required;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
+use App\Filament\Resources\PostResource\RelationManagers\CommentsRelationManager;
 use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\ImageColumn;
 
@@ -98,7 +99,7 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CommentsRelationManager::class,
         ];
     }
 
